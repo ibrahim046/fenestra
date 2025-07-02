@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fenestra - Vers un style de vie sain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(ellipse at top, #1a4d2e 0%, #2d5a3d 40%, #1a3d2e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: white;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(107, 167, 111, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(107, 167, 111, 0.2) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Floating elements and bubbles */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s linear infinite;
+        }
+
+        .shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            width: 60px;
+            height: 60px;
+            background: #6ba76f;
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 40px;
+            height: 40px;
+            background: #4a7c59;
+            border-radius: 20%;
+            animation-delay: -7s;
+        }
+
+        .shape:nth-child(3) {
+            top: 40%;
+            left: 80%;
+            width: 80px;
+            height: 80px;
+            background: #6ba76f;
+            border-radius: 30%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-30px) rotate(120deg);
+            }
+
+            66% {
+                transform: translateY(20px) rotate(240deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(360deg);
+            }
+        }
+
+        /* Animated floating bubbles */
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(107, 167, 111, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: bubbleFloat 15s linear infinite;
+            backdrop-filter: blur(5px);
+        }
+
+        .bubble:nth-child(1) {
+            width: 20px;
+            height: 20px;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 12s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 15px;
+            height: 15px;
+            left: 20%;
+            animation-delay: 2s;
+            animation-duration: 10s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 25px;
+            height: 25px;
+            left: 35%;
+            animation-delay: 4s;
+            animation-duration: 14s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 12px;
+            height: 12px;
+            left: 50%;
+            animation-delay: 6s;
+            animation-duration: 11s;
+        }
+
+        .bubble:nth-child(5) {
+            width: 18px;
+            height: 18px;
+            left: 65%;
+            animation-delay: 8s;
+            animation-duration: 13s;
+        }
+
+        .bubble:nth-child(6) {
+            width: 22px;
+            height: 22px;
+            left: 80%;
+            animation-delay: 10s;
+            animation-duration: 15s;
+        }
+
+        .bubble:nth-child(7) {
+            width: 16px;
+            height: 16px;
+            left: 90%;
+            animation-delay: 12s;
+            animation-duration: 9s;
+        }
+
+        .bubble:nth-child(8) {
+            width: 14px;
+            height: 14px;
+            left: 5%;
+            animation-delay: 14s;
+            animation-duration: 12s;
+        }
+
+        @keyframes bubbleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                transform: translateY(90vh) scale(1);
+                opacity: 0.6;
+            }
+
+            90% {
+                transform: translateY(10vh) scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Animated particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: particleFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px) translateX(0px);
+                opacity: 0.3;
+            }
+
+            25% {
+                transform: translateY(-15px) translateX(10px);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-25px) translateX(-5px);
+                opacity: 0.8;
+            }
+
+            75% {
+                transform: translateY(-10px) translateX(15px);
+                opacity: 0.6;
+            }
+        }
+
+        /* Glowing orbs */
+        .glowing-orbs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .orb:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(107, 167, 111, 0.2) 0%, transparent 70%);
+            top: 20%;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .orb:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(74, 124, 89, 0.15) 0%, transparent 70%);
+            top: 60%;
+            right: -75px;
+            animation-delay: 10s;
+        }
+
+        .orb:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(107, 167, 111, 0.25) 0%, transparent 70%);
+            top: 80%;
+            left: 30%;
+            animation-delay: 15s;
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0.3;
+            }
+
+            25% {
+                transform: translateY(-30px) translateX(20px) scale(1.1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-50px) translateX(-10px) scale(0.9);
+                opacity: 0.4;
+            }
+
+            75% {
+                transform: translateY(-20px) translateX(30px) scale(1.05);
+                opacity: 0.5;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Logo / Brand section */
+        .brand-section {
+            margin-bottom: 3rem;
+            animation: slideInDown 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .logo-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(107, 167, 111, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .logo-icon:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(107, 167, 111, 0.2);
+        }
+
+        .logo-svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        .brand-name {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #6ba76f 50%, #4a7c59 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .brand-tagline {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Main content */
+        .main-content {
+            max-width: 800px;
+            animation: slideInUp 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s both;
+        }
+
+        .construction-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #e8f5e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .construction-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Construction illustration */
+        .construction-scene {
+            margin: 3rem 0;
+            animation: slideInUp 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.6s both;
+        }
+
+        .construction-svg {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Quote section */
+        .quote-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            animation: slideInUp 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.9s both;
+        }
+
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 4rem;
+            color: #6ba76f;
+            font-weight: bold;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #ffffff;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* Contact section */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(107, 167, 111, 0.2);
+            animation: slideInUp 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.2s both;
+        }
+
+        .contact-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #ffffff;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(107, 167, 111, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            fill: #6ba76f;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+
+        /* Email subscription */
+        .subscription-section {
+            margin-top: 3rem;
+            animation: slideInUp 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.5s both;
+        }
+
+        .subscription-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .subscription-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(107, 167, 111, 0.3);
+            border-radius: 60px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .email-input:focus {
+            border-color: #6ba76f;
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        .submit-btn {
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #6ba76f, #4a7c59);
+            border: none;
+            border-radius: 60px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(107, 167, 111, 0.4);
+            background: linear-gradient(135deg, #7bb77f, #5a8c69);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .brand-name {
+                font-size: 3rem;
+            }
+
+            .construction-title {
+                font-size: 2.2rem;
+            }
+
+            .construction-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .subscription-form {
+                flex-direction: column;
+            }
+
+            .quote-section {
+                padding: 2rem;
+            }
+
+            .contact-section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .brand-name {
+                font-size: 2.5rem;
+            }
+
+            .brand-tagline {
+                font-size: 1rem;
+            }
+
+            .construction-title {
+                font-size: 1.8rem;
+            }
+
+            .logo-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo-svg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Animation keyframes */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Smooth reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <!-- Animated Bubbles -->
+    <div class="bubbles" id="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Glowing Orbs -->
+    <div class="glowing-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <div class="container">
+        <!-- Brand Section -->
+        <div class="brand-section">
+            <div class="logo-icon">
+                <svg class="logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Feuilles stylisées -->
+                    <g transform="translate(5, 5)">
+                        <path d="M15 30 Q25 10 35 30 Q25 25 15 30" fill="#6ba76f" />
+                        <path d="M25 25 Q35 5 45 25 Q35 20 25 25" fill="#6ba76f" />
+                        <path d="M10 35 Q20 15 30 35 Q20 30 10 35" fill="#6ba76f" />
+                        <path d="M30 35 Q40 15 50 35 Q40 30 30 35" fill="#6ba76f" />
+                        <path d="M20 40 Q30 20 40 40 Q30 35 20 40" fill="#6ba76f" />
+
+                        <!-- Lettre F moderne -->
+                        <path d="M25 5 L25 45 L20 45 L20 5 Z" fill="#ffffff" />
+                        <path d="M20 5 L45 5 L45 10 L20 10 Z" fill="#ffffff" />
+                        <path d="M20 22 L40 22 L40 27 L20 27 Z" fill="#ffffff" />
+
+                        <!-- Ondulations eau -->
+                        <ellipse cx="30" cy="50" rx="20" ry="2" fill="none" stroke="#6ba76f" stroke-width="2"
+                            opacity="0.8" />
+                        <ellipse cx="30" cy="50" rx="15" ry="1.5" fill="none" stroke="#6ba76f" stroke-width="1.5"
+                            opacity="0.6" />
+                    </g>
+                </svg>
+            </div>
+            <h1 class="brand-name">Fenestra</h1>
+            <p class="brand-tagline">Vers un style de vie sain</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 class="construction-title">Site en Construction</h2>
+            <p class="construction-subtitle">
+                Nous mettons tout en œuvre pour vous offrir une expérience nutritionnelle exceptionnelle.
+                Notre équipe d'experts travaille actuellement à la création d'un espace dédié à votre bien-être.
+            </p>
+
+            <!-- Construction Scene -->
+            <div class="construction-scene">
+                <svg class="construction-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background -->
+                    <defs>
+                        <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#e8f5e8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#6ba76f;stop-opacity:0.3" />
+                        </linearGradient>
+                    </defs>
+
+                    <rect width="400" height="300" fill="url(#skyGradient)" />
+
+                    <!-- Ground -->
+                    <path d="M0 220 Q200 200 400 220 L400 300 L0 300 Z" fill="#4a7c59" />
+
+                    <!-- Building under construction -->
+                    <rect x="120" y="140" width="160" height="80" fill="#ffffff" stroke="#6ba76f" stroke-width="3"
+                        rx="5" />
+
+                    <!-- Windows being installed -->
+                    <rect x="135" y="155" width="25" height="25" fill="#6ba76f" opacity="0.3" rx="3" />
+                    <rect x="170" y="155" width="25" height="25" fill="#6ba76f" opacity="0.5" rx="3" />
+                    <rect x="205" y="155" width="25" height="25" fill="#6ba76f" opacity="0.3" rx="3" />
+                    <rect x="240" y="155" width="25" height="25" fill="#6ba76f" opacity="0.4" rx="3" />
+
+                    <rect x="135" y="185" width="25" height="25" fill="#6ba76f" opacity="0.4" rx="3" />
+                    <rect x="170" y="185" width="25" height="25" fill="#6ba76f" opacity="0.3" rx="3" />
+                    <rect x="205" y="185" width="25" height="25" fill="#6ba76f" opacity="0.5" rx="3" />
+                    <rect x="240" y="185" width="25" height="25" fill="#6ba76f" opacity="0.3" rx="3" />
+
+                    <!-- Construction crane -->
+                    <g transform="translate(80, 60)">
+                        <!-- Crane tower -->
+                        <rect x="-3" y="0" width="6" height="160" fill="#4a7c59" />
+                        <!-- Crane arm -->
+                        <rect x="0" y="15" width="100" height="4" fill="#4a7c59" />
+                        <!-- Hook -->
+                        <line x1="85" y1="19" x2="85" y2="40" stroke="#6ba76f" stroke-width="2" />
+                        <rect x="82" y="40" width="6" height="8" fill="#6ba76f" rx="2" />
+                    </g>
+
+                    <!-- Construction workers -->
+                    <g transform="translate(150, 190)">
+                        <!-- Worker 1 -->
+                        <circle cx="0" cy="0" r="8" fill="#f4d1ae" />
+                        <rect x="-4" y="5" width="8" height="15" fill="#6ba76f" rx="2" />
+                        <rect x="-6" y="18" width="12" height="10" fill="#4a7c59" rx="1" />
+                        <!-- Hard hat -->
+                        <ellipse cx="0" cy="-3" rx="9" ry="6" fill="#FFD700" />
+                    </g>
+
+                    <g transform="translate(220, 190)">
+                        <!-- Worker 2 -->
+                        <circle cx="0" cy="0" r="8" fill="#f4d1ae" />
+                        <rect x="-4" y="5" width="8" height="15" fill="#4a7c59" rx="2" />
+                        <rect x="-6" y="18" width="12" height="10" fill="#6ba76f" rx="1" />
+                        <!-- Hard hat -->
+                        <ellipse cx="0" cy="-3" rx="9" ry="6" fill="#FF6B35" />
+                    </g>
+
+                    <!-- Tools and materials -->
+                    <rect x="300" y="200" width="15" height="4" fill="#8B4513" rx="2" />
+                    <rect x="320" y="195" width="20" height="10" fill="#6ba76f" rx="2" />
+                    <circle cx="350" cy="205" r="8" fill="#FFD700" opacity="0.7" />
+
+                    <!-- Construction sign -->
+                    <g transform="translate(50, 180)">
+                        <rect x="0" y="0" width="50" height="35" fill="#FFD700" stroke="#000" stroke-width="2" rx="3" />
+                        <text x="25" y="15" text-anchor="middle" font-size="8" font-weight="bold"
+                            fill="#000">TRAVAUX</text>
+                        <text x="25" y="25" text-anchor="middle" font-size="8" font-weight="bold" fill="#000">EN
+                            COURS</text>
+                    </g>
+
+                    <!-- Animated elements (sparks/activity) -->
+                    <g class="sparks">
+                        <circle cx="200" cy="160" r="2" fill="#FFD700" opacity="0.8">
+                            <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.5s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="185" cy="170" r="1.5" fill="#FF6B35" opacity="0.6">
+                            <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="230" cy="165" r="1" fill="#FFD700" opacity="0.7">
+                            <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite" />
+                        </circle>
+                    </g>
+
+                    <!-- Clouds -->
+                    <ellipse cx="80" cy="50" rx="25" ry="12" fill="#ffffff" opacity="0.8" />
+                    <ellipse cx="95" cy="45" rx="20" ry="10" fill="#ffffff" opacity="0.6" />
+                    <ellipse cx="320" cy="40" rx="30" ry="15" fill="#ffffff" opacity="0.7" />
+                </svg>
+            </div>
+
+            <!-- Quote Section -->
+            <div class="quote-section">
+                <p class="quote-text">
+                    Votre santé mérite mieux qu'un régime. Elle mérite une stratégie.
+                </p>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h3 class="contact-title">Restons en contact</h3>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        <span class="contact-text">fenestravie@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                        <span class="contact-text">+237 6 93 27 36 16</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                        <span class="contact-text">6 40 64 89 81</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        <span class="contact-text">Carrefour chefferie bonapriso, Douala</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" />
+                        </svg>
+                        <span class="contact-text">@Fenestra vie</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 60;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+
+                // Random colors for particles
+                const colors = ['rgba(255, 255, 255, 0.3)', 'rgba(107, 167, 111, 0.4)', 'rgba(74, 124, 89, 0.3)'];
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Dynamic bubble creation
+        function createDynamicBubbles() {
+            const bubblesContainer = document.getElementById('bubbles');
+
+            setInterval(() => {
+                if (bubblesContainer.children.length < 15) {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'bubble';
+                    bubble.style.left = Math.random() * 100 + '%';
+                    bubble.style.width = bubble.style.height = (Math.random() * 20 + 10) + 'px';
+                    bubble.style.animationDuration = (Math.random() * 6 + 8) + 's';
+                    bubble.style.background = `rgba(107, 167, 111, ${Math.random() * 0.3 + 0.1})`;
+                    bubble.style.border = `1px solid rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})`;
+
+                    bubblesContainer.appendChild(bubble);
+
+                    // Remove bubble after animation
+                    setTimeout(() => {
+                        if (bubble.parentNode) {
+                            bubble.parentNode.removeChild(bubble);
+                        }
+                    }, 15000);
+                }
+            }, 2000);
+        }
+
+        // Interactive mouse trail effect
+        function createMouseTrail() {
+            let mouseX = 0, mouseY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+                // Create trailing particles occasionally
+                if (Math.random() > 0.9) {
+                    createTrailParticle(mouseX, mouseY);
+                }
+            });
+        }
+
+        function createTrailParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: 6px;
+                height: 6px;
+                background: rgba(107, 167, 111, 0.6);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1000;
+                left: ${x}px;
+                top: ${y}px;
+                animation: trailFade 2s ease-out forwards;
+            `;
+
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 2000);
+        }
+
+        // Floating elements with physics
+        function enhanceFloatingElements() {
+            const shapes = document.querySelectorAll('.shape');
+
+            shapes.forEach((shape, index) => {
+                shape.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.3) rotate(45deg)';
+                    this.style.opacity = '0.3';
+                    this.style.transition = 'all 0.3s ease';
+                });
+
+                shape.addEventListener('mouseleave', function () {
+                    this.style.transform = '';
+                    this.style.opacity = '0.1';
+                });
+            });
+        }
+
+        // Pulsing glow effect for the logo
+        function addLogoGlowEffect() {
+            const logoIcon = document.querySelector('.logo-icon');
+
+            setInterval(() => {
+                if (logoIcon) {
+                    logoIcon.style.boxShadow = `
+                        0 20px 40px rgba(0,0,0,0.1),
+                        0 0 ${Math.random() * 30 + 20}px rgba(107, 167, 111, ${Math.random() * 0.5 + 0.3}),
+                        inset 0 0 ${Math.random() * 10 + 5}px rgba(255, 255, 255, 0.1)
+                    `;
+                }
+            }, 3000);
+        }
+
+        // Ambient sound visualization (visual only)
+        function createSoundVisualization() {
+            const container = document.querySelector('.container');
+
+            setInterval(() => {
+                const wave = document.createElement('div');
+                wave.style.cssText = `
+                    position: absolute;
+                    width: 2px;
+                    height: ${Math.random() * 100 + 50}px;
+                    background: linear-gradient(to top, transparent, rgba(107, 167, 111, 0.3), transparent);
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: waveAnimation 4s ease-in-out forwards;
+                    pointer-events: none;
+                    z-index: 1;
+                `;
+
+                container.appendChild(wave);
+                setTimeout(() => wave.remove(), 4000);
+            }, 5000);
+        }
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.reveal');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Email subscription form
+        document.getElementById('subscriptionForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = this.querySelector('.email-input').value;
+
+            if (email) {
+                // Create success message
+                const successMsg = document.createElement('div');
+                successMsg.innerHTML = `
+                    <div style="
+                        background: linear-gradient(135deg, #6ba76f, #4a7c59);
+                        color: white;
+                        padding: 1rem 2rem;
+                        border-radius: 15px;
+                        margin-top: 1rem;
+                        text-align: center;
+                        font-weight: 600;
+                        animation: slideInUp 0.5s ease;
+                    ">
+                        ✨ Parfait ! Nous vous contacterons dès que notre clinique sera prête !
+                    </div>
+                `;
+
+                // Replace form with success message
+                this.parentNode.replaceChild(successMsg, this);
+
+                // Add some celebration effect
+                createCelebrationEffect();
+            }
+        });
+
+        // Celebration effect for email submission
+        function createCelebrationEffect() {
+            for (let i = 0; i < 20; i++) {
+                createConfetti();
+            }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.style.cssText = `
+                position: fixed;
+                width: 10px;
+                height: 10px;
+                background: ${['#6ba76f', '#4a7c59', '#FFD700', '#ffffff'][Math.floor(Math.random() * 4)]};
+                top: -10px;
+                left: ${Math.random() * 100}vw;
+                z-index: 1000;
+                border-radius: 50%;
+                pointer-events: none;
+                animation: confettiFall ${Math.random() * 3 + 2}s linear forwards;
+            `;
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        // Add confetti animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect for floating shapes
+        function parallaxEffect() {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.shape');
+
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.5;
+                shape.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        }
+
+        // Interactive logo hover effect
+        const logoIcon = document.querySelector('.logo-icon');
+        if (logoIcon) {
+            logoIcon.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-10px) scale(1.1) rotate(5deg)';
+            });
+
+            logoIcon.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+            });
+        }
+
+        // Initialize all animations and effects
+        document.addEventListener('DOMContentLoaded', function () {
+            // Create all particle systems
+            createParticles();
+            createDynamicBubbles();
+            createMouseTrail();
+            enhanceFloatingElements();
+            addLogoGlowEffect();
+            createSoundVisualization();
+
+            // Add reveal class to elements that should animate
+            const animatedElements = document.querySelectorAll('.contact-section, .quote-section, .construction-scene');
+            animatedElements.forEach(el => el.classList.add('reveal'));
+
+            // Initial animation check
+            animateOnScroll();
+
+            // Add scroll listeners
+            window.addEventListener('scroll', animateOnScroll);
+            window.addEventListener('scroll', parallaxEffect);
+
+            // Enhanced background effect
+            setTimeout(() => {
+                document.body.style.background = `
+                    radial-gradient(ellipse at top, #1a4d2e 0%, #2d5a3d 40%, #1a3d2e 100%),
+                    radial-gradient(circle at 25% 25%, rgba(107, 167, 111, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 75% 75%, rgba(74, 124, 89, 0.1) 0%, transparent 50%)
+                `;
+            }, 2000);
+
+            // Add periodic sparkle bursts
+            setInterval(() => {
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        createSparkle(
+                            Math.random() * window.innerWidth,
+                            Math.random() * window.innerHeight
+                        );
+                    }, i * 200);
+                }
+            }, 10000);
+        });
+
+        // Add additional CSS animations
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            @keyframes trailFade {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: scale(0);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes waveAnimation {
+                0% {
+                    transform: scaleY(0);
+                    opacity: 0;
+                }
+                50% {
+                    transform: scaleY(1);
+                    opacity: 0.6;
+                }
+                100% {
+                    transform: scaleY(0);
+                    opacity: 0;
+                }
+            }
+            
+            .logo-icon {
+                transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+            }
+            
+            .contact-item {
+                transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+            }
+            
+            .brand-name {
+                animation: glow 4s ease-in-out infinite alternate;
+            }
+            
+            @keyframes glow {
+                from {
+                    text-shadow: 0 0 5px rgba(107, 167, 111, 0.3);
+                }
+                to {
+                    text-shadow: 0 0 20px rgba(107, 167, 111, 0.6), 0 0 30px rgba(107, 167, 111, 0.4);
+                }
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+
+        // Smooth animations on scroll
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: #FFD700;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1000;
+                left: ${x}px;
+                top: ${y}px;
+                animation: sparkleAnimation 1s ease-out forwards;
+            `;
+
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+
+        // Add sparkle animation
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkleAnimation {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1) rotate(180deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(0) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+
+        // Add sparkles on contact item hover
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('mouseenter', function (e) {
+                const rect = this.getBoundingClientRect();
+                createSparkle(rect.right - 10, rect.top + rect.height / 2);
+            });
+        });
+
+        // Dynamic typing effect for the quote (optional enhancement)
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Smooth reveal animations with intersection observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.contact-item, .quote-section').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
